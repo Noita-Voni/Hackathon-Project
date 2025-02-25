@@ -1,151 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events Page</title>
-    <link rel="stylesheet" href="eventsPage.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events Page</title>
+  <link rel="stylesheet" href="eventsPage.css" />
 </head>
 <body>
 
-<!-- Main Title -->
-<header>
+  <!-- Main Title -->
+  <header>
     <h1>Our Events</h1>
-</header>
+  </header>
 
-<br><br>
+  <!-- Badge Container for Gamification -->
+  <div id="badge-container"></div>
 
-<!-- Upcoming Events Section -->
-<section id="upcoming-events">
+  <br /><br />
+
+  <!-- Upcoming Events Section -->
+  <section id="upcoming-events">
     <h2>Upcoming Events</h2>
-    
-    <!-- Upcoming Event 1 -->
-    <div class="event">
-      <img src="images/img1.jpeg" alt="Event Image">
-      <a href="https://10times.com/e1d1-k1d1-8ppg-k" target="_blank">More Info</a>
-      <h3>Test Engineering and Automation Summit - Johannesburg 2025</h3>
-      <p>Summit 2025 in Johannesburg will focus on the theme 'Engineering the Future of Testing: Quality, Innovation, and Agility,' bringing together industry leaders and practitioners.</p>
-      <ul>
-        <li><strong>Date:</strong> 07 Mar 2025</li>
-        <li><strong>Place:</strong>Gallagher Convention Centre, Johannesburg, South Africa</li>
-        <li><strong>Time:</strong>
-          09:00 PM - 05:10 PM</li>
-      </ul>
+
+    <div class="slideshow-container" id="upcoming-slideshow">
+      <!-- Upcoming Event 1 -->
+      <div class="event-slide fade">
+        <div class="event">
+          <img src="images/img1.jpeg" alt="Event Image" />
+          <a href="https://10times.com/e1d1-k1d1-8ppg-k" target="_blank">More Info</a>
+          <h3>Test Engineering and Automation Summit - Johannesburg 2025</h3>
+          <p>
+            Summit 2025 in Johannesburg will focus on the theme
+            'Engineering the Future of Testing: Quality, Innovation, and Agility,'
+            bringing together industry leaders and practitioners.
+          </p>
+          <ul>
+            <li><strong>Date:</strong> 07 Mar 2025</li>
+            <li>
+              <strong>Place:</strong> Gallagher Convention Centre, Johannesburg,
+              South Africa
+            </li>
+            <li><strong>Time:</strong> 09:00 AM - 05:10 PM</li>
+          </ul>
+          <!-- Countdown Timer Container -->
+          <div class="countdown-timer" data-event-date="2025-03-07T09:00:00"></div>
+          <!-- Attend Button (using "upcoming" as event type) -->
+          <button class="attend-btn" data-event-type="upcoming">Attend</button>
+        </div>
+      </div>
+
+      <!-- Upcoming Event 2 -->
+      <div class="event-slide fade">
+        <div class="event">
+          <img src="images/img22.jpeg" alt="Event Image" />
+          <a href="https://10times.com/e1d5-942s-gzrx-g" target="_blank">More Info</a>
+          <h3>IT Leaders Forum 2025</h3>
+          <p>
+            The IT Leaders Forum is designed to help CIOs and IT executives navigate
+            the future of business and technology during these challenging times.
+            Success requires a resilient and adaptable technology strategy that can
+            withstand uncertainty and drive innovation.
+          </p>
+          <ul>
+            <li><strong>Date:</strong> 12 Mar 2025</li>
+            <li>
+              <strong>Place:</strong> Radisson Blu Gautrain Hotel, Sandton
+            </li>
+            <li><strong>Time:</strong> 09:00 AM - 06:00 PM</li>
+          </ul>
+          <!-- Countdown Timer Container -->
+          <div class="countdown-timer" data-event-date="2025-03-12T09:00:00"></div>
+          <!-- Attend Button -->
+          <button class="attend-btn" data-event-type="upcoming">Attend</button>
+        </div>
+      </div>
+
+      <!-- Upcoming Event 3 -->
+      <div class="event-slide fade">
+        <div class="event">
+          <img src="images/img3.jpg" alt="Event Image" />
+          <a href="https://10times.com/gmg-forum-johannesburg" target="_blank">More Info</a>
+          <h3>GMG Forum Johannesburg 2025</h3>
+          <p>
+            This event unites South Africa's mining industry professionals to discuss
+            innovation and sustainability. Attendees will explore challenges such as
+            decarbonization and safety, learn about AI and automation, and engage in
+            practical strategies and collaborative discussions.
+          </p>
+          <ul>
+            <li><strong>Date:</strong> 12 - 13 Mar 2025</li>
+            <li>
+              <strong>Place:</strong> 54 on Bath, Johannesburg, South Africa
+            </li>
+            <li><strong>Time:</strong> 09:00 AM - 06:00 PM</li>
+          </ul>
+          <!-- Countdown Timer Container -->
+          <div class="countdown-timer" data-event-date="2025-03-12T09:00:00"></div>
+          <!-- Attend Button -->
+          <button class="attend-btn" data-event-type="upcoming">Attend</button>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <a class="prev" onclick="changeSlide(-1, 'upcoming-slideshow')">&#10094;</a>
+      <a class="next" onclick="changeSlide(1, 'upcoming-slideshow')">&#10095;</a>
     </div>
-    
-    <!-- Upcoming Event 2 -->
-    <div class="event">
-      <img src="images/img22.jpeg" alt="Event Image">
-      <a href="https://10times.com/e1d5-942s-gzrx-g" target="_blank">More Info</a>
-      <h3>IT Leaders Forum 2025</h3>
-      <p>The IT Leaders Forum is designed to help CIOs and IT executives navigate the future of business and technology during these challenging times. Success requires a resilient and adaptable technology strategy that can withstand uncertainty and drive innovation.</p>
-      <ul>
-        <li><strong>Date:</strong>12 Mar 2025</li>
-        <li><strong>Place:</strong>Radisson Blu Gautrain Hotel, Sandton</li>
-        <li><strong>Time:</strong>09:00 AM-06:00 PM </li>
-      </ul>
-    </div>
-    
-    <!-- Upcoming Event 3 -->
-    <div class="event">
-      <img src="images/img3.jpg" alt="Event Image">
-      <a href="https://10times.com/gmg-forum-johannesburg" target="_blank">More Info</a>
-      <h3>GMG Forum Johannesburg 2025</h3>
-      <p>This event unites South Africas mining industry professionals to discuss innovation and sustainability. Attendees will explore challenges such as decarbonization and safety, learn about AI and automation, and engage in practical strategies and collaborative discussions.</p>
-      <ul>
-        <li><strong>Date:</strong>12 - 13 Mar 2025</li>
-        <li><strong>Place:</strong>54 on Bath, Johannesburg, South Africa</li>
-        <li><strong>Time:</strong>09:00 AM-06:00 PM </li>
-      </ul>
+
+    <!-- Dot Indicators -->
+    <div class="dots-container" id="upcoming-dots">
+      <span class="dot" onclick="currentSlide(1, 'upcoming-slideshow')"></span>
+      <span class="dot" onclick="currentSlide(2, 'upcoming-slideshow')"></span>
+      <span class="dot" onclick="currentSlide(3, 'upcoming-slideshow')"></span>
     </div>
   </section>
-  
+
   <!-- Workshops Section -->
   <section id="workshops">
     <h2>Workshops</h2>
-    
-    <!-- Workshop 1 -->
-    <div class="event">
-      <img src="images/img4.png" alt="Event Image">
-      <a href="https://10times.com/e1x2-z3z2-d2ss" target="_blank">More Info</a>
-      <h3>Cyber Security Summit South Africa 2025</h3>
-      <p>The Cyber Security Summit South Africa is an exclusive event for cybersecurity leaders in the country, aiming to discuss goals and strategies, featuring top experts and exploring digital innovations. Attendees can collaborate, connect, and gain insights to protect their businesses. Topics will include generative AI, the cyber threat landscape, and privacy-preserving data sharing. The event is designed for professionals in roles such as CISO, CIO, and Heads of IT. Testimonials praise the informative presentations and productive conversations with potential customers.</p>
-      <ul>
-        <li><strong>Date:</strong>13 Mar 2025</li>
-        </li><strong>Place:</strong>Johannesburg, South Africa</li>
-        <li><strong>Time:</strong>09:00 AM-06:00 PM</li>
-      </ul>
+
+    <div class="slideshow-container" id="workshops-slideshow">
+      <!-- Workshop 1 -->
+      <div class="event-slide fade">
+        <div class="event">
+          <img src="images/img4.png" alt="Event Image" />
+          <a href="https://10times.com/e1x2-z3z2-d2ss" target="_blank">More Info</a>
+          <h3>Cyber Security Summit South Africa 2025</h3>
+          <p>
+            The Cyber Security Summit South Africa is an exclusive event for cybersecurity
+            leaders in the country, aiming to discuss goals and strategies, featuring top
+            experts and exploring digital innovations. Attendees can collaborate, connect,
+            and gain insights to protect their businesses. Topics will include generative AI,
+            the cyber threat landscape, and privacy-preserving data sharing.
+          </p>
+          <ul>
+            <li><strong>Date:</strong> 13 Mar 2025</li>
+            <li><strong>Place:</strong> Johannesburg, South Africa</li>
+            <li><strong>Time:</strong> 09:00 AM - 06:00 PM</li>
+          </ul>
+          <!-- Countdown Timer Container -->
+          <div class="countdown-timer" data-event-date="2025-03-13T09:00:00"></div>
+          <!-- Attend Button (using "workshop" as event type) -->
+          <button class="attend-btn" data-event-type="workshop">Attend</button>
+        </div>
+      </div>
+
+      <!-- Workshop 2 -->
+      <div class="event-slide fade">
+        <div class="event">
+          <img src="images/img5.jpg" alt="Event Image" />
+          <a href="https://10times.com/e1x2-45g8-kkrx" target="_blank">More Info</a>
+          <h3>Proplas Africa 2025</h3>
+          <p>
+            Propak Africa is the ultimate packaging industry trade show featuring cutting-edge
+            machinery, products, and services. It is a platform for industry decision-makers to
+            explore trends, build connections, increase brand awareness, and facilitate sales.
+            Join us in shaping the future of packaging, printing, food processing, plastics, and
+            labelling industries.
+          </p>
+          <ul>
+            <li><strong>Date:</strong> 11 - 14 Mar 2025</li>
+            <li>
+              <strong>Place:</strong> Johannesburg Expo Centre, Johannesburg
+            </li>
+            <li><strong>Time:</strong> 09:00 AM - 06:00 PM</li>
+          </ul>
+          <!-- Countdown Timer Container -->
+          <div class="countdown-timer" data-event-date="2025-03-11T09:00:00"></div>
+          <!-- Attend Button -->
+          <button class="attend-btn" data-event-type="workshop">Attend</button>
+        </div>
+      </div>
+
+      <!-- Workshop 3 -->
+      <div class="event-slide fade">
+        <div class="event">
+          <img src="images/img6.webp" alt="Event Image" />
+          <a href="https://10times.com/e1rp-04g4-9rff" target="_blank">More Info</a>
+          <h3>Public Sector Cybersecurity Summit 2025</h3>
+          <p>
+            The Public Sector Cybersecurity Summit provides insights from case studies and experts,
+            focusing on emerging threats, global best practices, and risk mitigation strategies to
+            enhance organizational cybersecurity.
+          </p>
+          <ul>
+            <li><strong>Date:</strong> Gallagher Convention Centre, Johannesburg</li>
+            <li><strong>Place:</strong> 03 Apr 2025</li>
+            <li><strong>Time:</strong> 09:00 AM - 06:00 PM</li>
+          </ul>
+          <!-- Countdown Timer Container -->
+          <div class="countdown-timer" data-event-date="2025-04-03T09:00:00"></div>
+          <!-- Attend Button -->
+          <button class="attend-btn" data-event-type="workshop">Attend</button>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <a class="prev" onclick="changeSlide(-1, 'workshops-slideshow')">&#10094;</a>
+      <a class="next" onclick="changeSlide(1, 'workshops-slideshow')">&#10095;</a>
     </div>
-    
-    <!-- Workshop 2 -->
-    <div class="event">
-      <img src="images/img5.jpg" alt="Event Image">
-      <a href="https://10times.com/e1x2-45g8-kkrx" target="_blank">More Info</a>
-      <h3>Proplas Africa 2025</h3>
-      <p>Propak Africa is the ultimate packaging industry trade show featuring cutting-edge machinery, products, and services. It is a platform for industry decision-makers to explore trends, build connections, increase brand awareness, and facilitate sales. Join us in shaping the future of packaging, printing, food processing, plastics, and labelling industries.</p>
-      <ul>
-        <li><strong>Date:</strong>11 - 14 Mar 2025</li>
-        <li><strong>Place:</strong>Johannesburg Expo Centre, Johannesburg</li>
-        <li><strong>Time:</strong> 09:00AM-06:00PM</li>
-      </ul>
-    </div>
-    
-    <!-- Workshop 3 -->
-    <div class="event">
-      <img src="images/img6.webp" alt="Event Image">
-      <a href="https://10times.com/e1rp-04g4-9rff" target="_blank">More Info</a>
-      <h3>Public Sector Cybersecurity Summit 2025</h3>
-      <p>The Public Sector Cybersecurity Summit provides insights from case studies and experts, focusing on emerging threats, global best practices, and risk mitigation strategies to enhance organizational cybersecurity.</p>
-      <ul>
-        <li><strong>Date:</strong>Gallagher Convention Centre, Johannesburg</li>
-        <li><strong>Place:</strong>03 Apr 2025</li>
-        <li><strong>Time:</strong>09:00 AM-06:00 PM</li>
-      </ul>
+
+    <!-- Dot Indicators -->
+    <div class="dots-container" id="workshops-dots">
+      <span class="dot" onclick="currentSlide(1, 'workshops-slideshow')"></span>
+      <span class="dot" onclick="currentSlide(2, 'workshops-slideshow')"></span>
+      <span class="dot" onclick="currentSlide(3, 'workshops-slideshow')"></span>
     </div>
   </section>
-  
+
   <!-- Hackathons Section -->
   <section id="hackathons">
     <h2>Hackathons</h2>
-    
-    <!-- Hackathon 1 -->
-    <div class="event">
-      <img src="images/img7.jpg" alt="Event Image">
-      <a href="https://www.africanastronomicalsociety.org/2024/12/12/join-the-afas-2025-data-science-hackathon/#:~:text=Event%20Details%3A,Location%3A%20Emperors%20Palace%2C%20Gauteng" target="_blank">More Info</a>
-      <h3>African Astronomical Society</h3>
-      <p>Are you ready to innovate and tackle astronomical challenges using data science? As part of the African Astronomical Society (AfAS) Conference and General Assembly 2025, we are excited to host the AfAS-2025 Data Science Hackathon under the theme “Connecting Astronomy in Africa: A Pathway to Growth.” This hackathon will offer participants the chance to experience the entire pipeline of machine learning, from conception to application. We will make use of the advanced South African ilifu data-intensive research cloud facility to run the hackathon challenge.</p>
-      <ul>
-        <li><strong>Date:</strong>20–21 March 2025</li>
-        <li><strong>Place:</strong> Emperors Palace, Gauteng</li>
-        <li><strong>Time:</strong>09:00AM-16:00PM, 2 Days</li>
-      </ul>
+
+    <div class="slideshow-container" id="hackathons-slideshow">
+      <!-- Hackathon 1 -->
+      <div class="event-slide fade">
+        <div class="event">
+          <img src="images/img7.jpg" alt="Event Image" />
+          <a href="https://www.africanastronomicalsociety.org/2024/12/12/join-the-afas-2025-data-science-hackathon/#:~:text=Event%20Details%3A,Location%3A%20Emperors%20Palace%2C%20Gauteng" target="_blank">More Info</a>
+          <h3>African Astronomical Society</h3>
+          <p>
+            Are you ready to innovate and tackle astronomical challenges using data science? As
+            part of the African Astronomical Society (AfAS) Conference and General Assembly 2025,
+            we are excited to host the AfAS-2025 Data Science Hackathon under the theme “Connecting
+            Astronomy in Africa: A Pathway to Growth.” This hackathon will offer participants the
+            chance to experience the entire pipeline of machine learning, from conception to
+            application. We will make use of the advanced South African ilifu data-intensive research
+            cloud facility to run the hackathon challenge.
+          </p>
+          <ul>
+            <li><strong>Date:</strong> 20-21 March 2025</li>
+            <li><strong>Place:</strong> Emperors Palace, Gauteng</li>
+            <li><strong>Time:</strong> 09:00 AM - 16:00 PM, 2 Days</li>
+          </ul>
+          <!-- Countdown Timer Container -->
+          <div class="countdown-timer" data-event-date="2025-03-20T09:00:00"></div>
+          <!-- Attend Button (using "hackathon" as event type) -->
+          <button class="attend-btn" data-event-type="hackathon">Attend</button>
+        </div>
+      </div>
+
+      <!-- Hackathon 2 -->
+      <div class="event-slide fade">
+        <div class="event">
+          <img src="images/img88.png" alt="Event Image" />
+          <a href="https://forum.entelect.co.za/c/entelect-challenge-2025/64" target="_blank">More Info</a>
+          <h3>Entelect Challenge 2025</h3>
+          <p>
+            We're thrilled to be partnering with @iitpsa - Institute of IT Professionals South Africa -
+            for a one-day hackathon on March 1st, 2025! Participants will have the chance to showcase
+            their skills and connect with professionals, not to mention win some of the R20,000 prize pool!
+            🎉Register on the Entelect Challenge website (link in story) and make sure you're an IITPSA member.
+          </p>
+          <ul>
+            <li><strong>Date:</strong> 1 March</li>
+            <li>
+              <strong>Place:</strong> 3 Melrose Blvd, Melrose, Johannesburg
+            </li>
+            <li><strong>Time:</strong> 09:00 AM - 16:00 PM</li>
+          </ul>
+          <!-- Countdown Timer Container -->
+          <div class="countdown-timer" data-event-date="2025-03-01T09:00:00"></div>
+          <!-- Attend Button -->
+          <button class="attend-btn" data-event-type="hackathon">Attend</button>
+        </div>
+      </div>
+
+      <!-- Hackathon 3 -->
+      <div class="event-slide fade">
+        <div class="event">
+          <img src="images/eduvos.png" alt="Event Image" />
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2-KizJH6LjYvrUWDUk571h7uEMipkYjf_6DDW2VJ3cXxJTA/viewform?usp=header" target="_blank">More Info</a>
+          <h3>Can't Find Any Hackathon</h3>
+          <p>Sign Up and keep up to Date</p>
+          <!-- No countdown timer for this event -->
+          <!-- Optionally, you can add an attend button here too if desired -->
+          <button class="attend-btn" data-event-type="hackathon">Attend</button>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <a class="prev" onclick="changeSlide(-1, 'hackathons-slideshow')">&#10094;</a>
+      <a class="next" onclick="changeSlide(1, 'hackathons-slideshow')">&#10095;</a>
     </div>
-    
-    <!-- Hackathon 2 -->
-    <div class="event">
-      <img src="images/img88.png" alt="Event Image">
-      <a href="https://forum.entelect.co.za/c/entelect-challenge-2025/64" target="_blank">More Info</a>
-      <h3>Entelect Challenge 2025</h3>
-      <p>We're thrilled to be partnering with @iitpsa - Institute of IT Professionals South Africa - for a one-day hackathon on March 1st, 2025! Participants will have the chance to showcase their skills and connect with professionals, not to mention win some of the R20,000 prize pool! 🎉Register on the Entelect Challenge website (link in story) and make sure you're an IITPSA member.
-        </p>
-      <ul>
-        <li><strong>Date:</strong>1 March </li>
-        <li><strong>Place:</strong> 3 Melrose Blvd, Melrose, Johannesburg </li>
-        <li><strong>Time:</strong>09:00AM-16:00PM</li>
-      </ul>
-    </div>
-    
-    <!-- Hackathon 3 -->
-    <div class="event">
-      <img src="images/eduvos.png" alt="Event Image">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2-KizJH6LjYvrUWDUk571h7uEMipkYjf_6DDW2VJ3cXxJTA/viewform?usp=header" target="_blank">More Info</a>
-      <h3>Can't Find Any Hackathon</h3>
-      <p>Sign Up and keep up to Date</p>
+
+    <!-- Dot Indicators -->
+    <div class="dots-container" id="hackathons-dots">
+      <span class="dot" onclick="currentSlide(1, 'hackathons-slideshow')"></span>
+      <span class="dot" onclick="currentSlide(2, 'hackathons-slideshow')"></span>
+      <span class="dot" onclick="currentSlide(3, 'hackathons-slideshow')"></span>
     </div>
   </section>
 
-
-
-    <script src="eventsPage.js"></script>
+  <script src="eventsPage.js"></script>
 </body>
 </html>

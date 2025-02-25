@@ -1,4 +1,5 @@
-body {
+/* Base Styles */
+body { 
   background-color: navy;
   text-align: center;
   margin: 0;
@@ -6,23 +7,21 @@ body {
   font-family: Arial, sans-serif; 
 }
 
-
 h1 {
   font-size: 3rem; 
   color: yellow;
   margin-bottom: 20px;
 }
-h1:hover{
-  color:white;
+h1:hover {
+  color: white;
 }
-
 
 h2 {
   font-size: 2rem; 
   color: white;
   margin-bottom: 15px;
 }
-h2:hover{
+h2:hover {
   color: yellow;
 }
 
@@ -40,7 +39,6 @@ h2:hover{
   max-width: 500px; 
   transition: all 0.3s ease-in-out; 
 }
-
 
 .event:hover {
   background-color: rgb(255, 255, 255);
@@ -66,4 +64,180 @@ h2:hover{
   height: auto;     
   border-radius: 15px; 
   margin: 0 auto 10px auto;
+}
+
+/* Slideshow Container */
+.slideshow-container {
+  position: relative;
+  margin: 20px auto;
+  width: 60%; 
+  max-width: 500px;
+}
+
+
+.event-slide {
+  display: none;
+}
+
+
+.event-slide.active {
+  display: block;
+}
+
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1s;
+}
+@keyframes fade {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  user-select: none;
+  background-color: rgba(0,0,0,0.3);
+  transition: background-color 0.3s;
+}
+
+.prev {
+  left: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.dots-container {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: lightblue;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: white;
+}
+
+/* Mobile-Friendly Responsive Styles */
+@media only screen and (max-width: 900px) {
+  h1 {
+    font-size: 2.75rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .event {
+    width: 80%;
+    padding: 12px;
+  }
+  
+  .slideshow-container {
+    width: 80%;
+  }
+  
+  .prev, .next {
+    font-size: 16px;
+    padding: 14px;
+  }
+  
+  .event img {
+    width: 85%;
+    border-radius: 12px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .event {
+    width: 90%;
+    padding: 10px;
+  }
+  
+  .slideshow-container {
+    width: 90%;
+  }
+  
+  .prev, .next {
+    font-size: 14px;
+    padding: 12px;
+  }
+  
+  .event img {
+    width: 95%;
+    border-radius: 10px;
+  }
+}
+
+/* --- Gamification Styles --- */
+
+/* Badge Container */
+#badge-container {
+  margin: 20px auto;
+  padding: 10px;
+  width: 60%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Individual Badge */
+.badge {
+  display: inline-block;
+  background-color: gold;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 20px;
+  margin: 5px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Attend Button */
+.attend-btn {
+  background-color: #0400ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.attend-btn:hover {
+  background-color: #ffffff;
 }
