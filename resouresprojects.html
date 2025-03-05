@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources & Projects</title>
+  <link rel="stylesheet" href="resouresprojects.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Eduvos Coding Club</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="eventsPage.html">Events</a>
+        <a href="resouresprojects.html" class="active">Resources</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Resources & Projects</h1>
+    <p class="tagline">Explore and share coding resources with our community</p>
+  </div>
+
+  <!-- Search Bar -->
+  <input type="text" id="searchInput" placeholder="Search projects..." />
+
+  <!-- Updated Category Navigation -->
+  <nav class="categories">
+    <button class="category-btn active" data-category="all">All</button>
+    <button class="category-btn" data-category="beginner">Beginner</button>
+    <button class="category-btn" data-category="intermediate">Intermediate</button>
+    <button class="category-btn" data-category="expert">Expert</button>
+  </nav>
+
+ <!-- Project Submission Section -->
+ <section id="project-submission">
+    <h2>Submit Your Project</h2>
+    <form id="submitProjectForm">
+      <input type="text" id="projectTitle" placeholder="Project Title" required />
+      <select id="projectLevel" required>
+        <option value="">Select Level</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="expert">Expert</option>
+      </select>
+      <input type="url" id="projectLink" placeholder="GitHub Link" required />
+      <!-- New field for contributor's name -->
+      <input type="text" id="contributorName" placeholder="Your Name" required />
+      <textarea id="projectDescription" placeholder="Project Description" required></textarea>
+      <button type="submit">Submit Project</button>
+    </form>
+  </section>
+
+  <!-- Projects Grid -->
+  <section id="projects-grid">
+    <!-- Beginner Projects & Resources -->
+    <div class="project-card" data-category="beginner">
+      <img src="imagesRP/img1.png" alt="Basic Portfolio Website" />
+      <h3>Basic Portfolio Website</h3>
+      <p>A simple portfolio built with HTML & CSS.</p>
+      <a href="https://github.com/alisolanki/Portfolio" target="_blank">GitHub Repo</a>
+    </div>
+
+    <div class="project-card" data-category="beginner">
+      <img src="imagesRP/img2.jpeg" alt="Simple To-Do List App" />
+      <h3>Simple To-Do List App</h3>
+      <p>A basic JavaScript app to manage your to-do list.</p>
+      <a href="https://github.com/vanGonarenko1/ToDoListApp" target="_blank">GitHub Repo</a>
+    </div>
+
+    <!-- Beginner Tutorial Resources -->
+    <div class="project-card" data-category="beginner">
+      <img src="imagesRP/img3.jpeg" alt="HTML & CSS Tutorial" />
+      <h3>HTML & CSS Tutorial</h3>
+      <p>Learn the basics with this comprehensive freeCodeCamp course.</p>
+      <a href="https://www.freecodecamp.org/learn" target="_blank">Learn More</a>
+    </div>
+
+    <div class="project-card" data-category="beginner">
+      <img src="imagesRP/img4.jpg" alt="CSS Basics Video" />
+      <h3>CSS Basics – YouTube</h3>
+      <p>A step-by-step video tutorial on CSS fundamentals.</p>
+      <a href="https://www.youtube.com/watch?v=1PnVor36_40" target="_blank">Watch Now</a>
+    </div>
+
+    <!-- Intermediate Projects & Resources -->
+    <div class="project-card" data-category="intermediate">
+      <img src="imagesRP/img5.jpg" alt="JavaScript Quiz App" />
+      <h3>JavaScript Quiz App</h3>
+      <p>An interactive quiz app built using vanilla JavaScript.</p>
+      <a href="https://github.com/jamesqquick/Build-A-Quiz-App-With-HTML-CSS-and-JavaScript" target="_blank">GitHub Repo</a>
+    </div>
+
+    <div class="project-card" data-category="intermediate">
+      <img src="imagesRP/img6.jpeg" alt="Weather App" />
+      <h3>Weather App</h3>
+      <p>A dynamic weather application that consumes an API.</p>
+      <a href="https://github.com/stage88/react-weather" target="_blank">GitHub Repo</a>
+    </div>
+
+    <!-- Intermediate Tutorial Resources -->
+    <div class="project-card" data-category="intermediate">
+      <img src="imagesRP/img7.png" alt="JavaScript Crash Course" />
+      <h3>JavaScript Crash Course</h3>
+      <p>An intermediate course to level up your JavaScript skills.</p>
+      <a href="https://youtu.be/EerdGm-ehJQ?si=iBjZ6uUY_PKv_YB_" target="_blank">Watch Now</a>
+    </div>
+
+    <div class="project-card" data-category="intermediate">
+      <img src="imagesRP/img8.jpg" alt="Weather App Tutorial" />
+      <h3>Build a Weather App</h3>
+      <p>A tutorial on building a weather app using APIs.</p>
+      <a href="https://youtu.be/74IOjtVvExY?si=i5x9p44Tr2T9jwk1" target="_blank">Learn More</a>
+    </div>
+
+    <!-- Expert Projects & Resources -->
+    <div class="project-card" data-category="expert">
+      <img src="imagesRP/img9.jpg" alt="AI Chat Bot" />
+      <h3>AI Chatbot with TensorFlow.js</h3>
+      <p>An advanced chatbot leveraging AI and TensorFlow.js.</p>
+      <a href="https://github.com/myreader-io/myGPTReader" target="_blank">GitHub Repo</a>
+    </div>
+
+    <div class="project-card" data-category="expert">
+      <img src="imagesRP/img10.png" alt="Blockchain Voting System" />
+      <h3>Blockchain Voting System</h3>
+      <p>A decentralized voting system built on blockchain technology.</p>
+      <a href="https://github.com/akverma26/voting-system-using-block-chain" target="_blank">GitHub Repo</a>
+    </div>
+
+    <!-- Expert Tutorial Resources -->
+    <div class="project-card" data-category="expert">
+      <img src="imagesRP/img11.png" alt="Advanced Machine Learning Tutorial" />
+      <h3>Advanced Machine Learning Tutorial</h3>
+      <p>A deep dive into machine learning techniques for experts.</p>
+      <a href="https://www.youtube.com/watch?v=someMLTutorial" target="_blank">Watch Now</a>
+    </div>
+
+    <div class="project-card" data-category="expert">
+      <img src="imagesRP/img12.jpeg" alt="Advanced React Patterns" />
+      <h3>Advanced React Patterns</h3>
+      <p>Learn cutting-edge patterns for building robust React applications.</p>
+      <a href="https://www.youtube.com/watch?v=someReactVideo" target="_blank">Learn More</a>
+    </div>
+  </section>
+
+  <!-- User Uploaded Projects Section -->
+  <section id="uploaded-projects">
+    <h2>Community Uploaded Projects</h2>
+    <div id="uploaded-projects-grid">
+      <!-- Dynamically added projects will appear here -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Eduvos Coding Club - Code Crashers. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

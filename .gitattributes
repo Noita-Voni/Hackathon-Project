@@ -1,2 +1,38 @@
 # Auto detect text files and perform LF normalization
-* text=auto
+* text=auto eol=lf
+
+# Documents
+*.md text diff=markdown
+*.txt text
+*.pdf binary
+*.doc binary
+*.docx binary
+*.ppt binary
+*.pptx binary
+
+# Source code
+*.java text diff=java
+*.py text diff=python
+*.js text
+*.ts text
+*.html text diff=html
+*.css text diff=css
+*.json text
+
+# Graphics
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+
+# Ignore files
+.gitignore text
+.gitattributes text
+

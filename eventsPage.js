@@ -1,11 +1,8 @@
-
 var slideIndices = {};
-
 
 document.addEventListener("DOMContentLoaded", function () {
   var slideshows = ["upcoming-slideshow", "workshops-slideshow", "hackathons-slideshow"];
   
-
   slideshows.forEach(function (id) {
     slideIndices[id] = 1;        
     showSlides(1, id);            
@@ -13,8 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
       changeSlide(1, id);
     }, 5000);
   });
+
+  // Initialize badges and event attendance on page load
+  initializeAttendance();
+  updateCountdowns();
+  updateBadges();
 });
 
+// --- Slideshow Functions --- //
 
 function changeSlide(n, slideshowId) {
   showSlides(slideIndices[slideshowId] + n, slideshowId);
@@ -53,96 +56,96 @@ function showSlides(n, slideshowId) {
   }
 }
 
-// --- Countdown Timer Code --- //
-
+// --- Countdown Timer --- //
 
 function updateCountdowns() {
+  const countdownElements = document.querySelectorAll('.countdown-timer');
+  
+  countdownElements.forEach(el => {
+    const eventDateStr = el.getAttribute('data-event-date');
+    const eventDate = new Date(eventDateStr);
+    const now = new Date();
+    const diff = eventDate - now;
+  
+    if (diff <= 0) {
+      el.innerHTML = "Event started!";
+      return;
+    }
+  
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  
+    el.innerHTML = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds left!`;
+  });
+}
+  
+setInterval(updateCountdowns, 1000);
 
-    const countdownElements = document.querySelectorAll('.countdown-timer');
-  
-    countdownElements.forEach(el => {
-      const eventDateStr = el.getAttribute('data-event-date');
-      const eventDate = new Date(eventDateStr);
-      const now = new Date();
-      const diff = eventDate - now;
-  
-      if (diff <= 0) {
-        el.innerHTML = "Event started!";
-        return;
-      }
-  
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-  
-      el.innerHTML = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds left!`;
+// --- Attendance Tracking & Badges --- //
+
+function initializeAttendance() {
+  let attendButtons = document.querySelectorAll(".attend-btn");
+  let attendedEvents = JSON.parse(localStorage.getItem("attendedEvents")) || {};
+
+  attendButtons.forEach(function (button) {
+    let eventType = button.getAttribute("data-event-type");
+
+    // Update button text with the number of times attended
+    updateButtonText(button, eventType, attendedEvents[eventType] || 0);
+
+    button.addEventListener("click", function () {
+      attendEvent(eventType);
+      updateButtonText(this, eventType, attendedEvents[eventType] || 0);
     });
-  }
-  
-  setInterval(updateCountdowns, 1000);
-  
-  updateCountdowns();
+  });
 
- // --- Gamification: Event Badges (Event Attendance Tracking) --- //
+  updateBadges();
+}
 
 function attendEvent(eventType) {
-    let attendedEvents = JSON.parse(localStorage.getItem("attendedEvents")) || {};
-  
-    if (!attendedEvents[eventType]) {
-      attendedEvents[eventType] = 0;
-    }
+  let attendedEvents = JSON.parse(localStorage.getItem("attendedEvents")) || {};
 
-    attendedEvents[eventType]++;
-    localStorage.setItem("attendedEvents", JSON.stringify(attendedEvents));
-    updateBadges();
+  if (!attendedEvents[eventType]) {
+    attendedEvents[eventType] = 0;
   }
-  
-  function updateBadges() {
-    let attendedEvents = JSON.parse(localStorage.getItem("attendedEvents")) || {};
 
-    let badgeContainer = document.getElementById("badge-container");
-    if (!badgeContainer) return; 
-  
-    badgeContainer.innerHTML = "";
-  
-    if (attendedEvents["hackathon"] && attendedEvents["hackathon"] >= 3) {
-      let badge = document.createElement("div");
-      badge.className = "badge";
-      badge.textContent = "🏆 3 Hackathons Attended!";
-      badgeContainer.appendChild(badge);
-    }
-  
+  attendedEvents[eventType]++; // Increase count on each attendance
+  localStorage.setItem("attendedEvents", JSON.stringify(attendedEvents));
 
-    if (attendedEvents["workshop"] && attendedEvents["workshop"] >= 5) {
-      let badge = document.createElement("div");
-      badge.className = "badge";
-      badge.textContent = "🎖️ 5 Workshops Attended!";
-      badgeContainer.appendChild(badge);
-    }
-  
+  updateBadges();
+}
 
-    let totalEvents = Object.values(attendedEvents).reduce((sum, count) => sum + count, 0);
-    if (totalEvents >= 10) {
-      let badge = document.createElement("div");
-      badge.className = "badge";
-      badge.textContent = "🌟 10 Events Attended - Event Pro!";
-      badgeContainer.appendChild(badge);
-    }
+function updateButtonText(button, eventType, count) {
+  button.innerText = `Attend (${count})`;
+}
+
+function updateBadges() {
+  let attendedEvents = JSON.parse(localStorage.getItem("attendedEvents")) || {};
+  let badgeContainer = document.getElementById("badge-container");
+  if (!badgeContainer) return; 
+  badgeContainer.innerHTML = "";
+
+  if (attendedEvents["hackathon"] >= 3) {
+    let badge = document.createElement("div");
+    badge.className = "badge";
+    badge.textContent = "🏆 3 Hackathons Attended -True Vossie Geek!";
+    badgeContainer.appendChild(badge);
   }
-  
 
-  document.addEventListener("DOMContentLoaded", function () {
+  if (attendedEvents["workshop"] >= 5) {
+    let badge = document.createElement("div");
+    badge.className = "badge";
+    badge.textContent = "🎖️ 5 Workshops Attended - Workshop Hero!";
+    badgeContainer.appendChild(badge);
+  }
 
-    let attendButtons = document.querySelectorAll(".attend-btn");
-    attendButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
- 
-        let eventType = this.getAttribute("data-event-type");
-        attendEvent(eventType);
-      });
-    });
-  
-
-    updateBadges();
-  });
+  let totalEvents = Object.values(attendedEvents).reduce((sum, count) => sum + count, 0);
+  if (totalEvents >= 10) {
+    let badge = document.createElement("div");
+    badge.className = "badge";
+    badge.textContent = "🌟 10 Events Attended - Event Pro!";
+    badgeContainer.appendChild(badge);
+  }
+}

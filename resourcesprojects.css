@@ -1,0 +1,12 @@
+#user-projects-grid {
+    padding: 2rem;
+    margin-top: 2rem;
+    border-top: 2px solid #eee;
+}
+
+#user-projects-grid h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2em;
+}

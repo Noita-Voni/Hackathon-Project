@@ -5,13 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Events Page</title>
   <link rel="stylesheet" href="eventsPage.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header>
+    <nav>
+      <div class="logo">Eduvos Coding Club</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="eventsPage.html" class="active">Events</a>
+        <a href="resouresprojects.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
 
   <!-- Main Title -->
-  <header>
+  <div class="hero">
     <h1>Our Events</h1>
-  </header>
+    <p class="tagline">Join us for exciting coding events and activities!</p>
+  </div>
 
   <!-- Badge Container for Gamification -->
   <div id="badge-container"></div>
@@ -72,6 +86,7 @@
           <div class="countdown-timer" data-event-date="2025-03-12T09:00:00"></div>
           <!-- Attend Button -->
           <button class="attend-btn" data-event-type="upcoming">Attend</button>
+          
         </div>
       </div>
 
@@ -266,17 +281,6 @@
       </div>
 
       <!-- Hackathon 3 -->
-      <div class="event-slide fade">
-        <div class="event">
-          <img src="images/eduvos.png" alt="Event Image" />
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2-KizJH6LjYvrUWDUk571h7uEMipkYjf_6DDW2VJ3cXxJTA/viewform?usp=header" target="_blank">More Info</a>
-          <h3>Can't Find Any Hackathon</h3>
-          <p>Sign Up and keep up to Date</p>
-          <!-- No countdown timer for this event -->
-          <!-- Optionally, you can add an attend button here too if desired -->
-          <button class="attend-btn" data-event-type="hackathon">Attend</button>
-        </div>
-      </div>
 
       <!-- Navigation Arrows -->
       <a class="prev" onclick="changeSlide(-1, 'hackathons-slideshow')">&#10094;</a>
@@ -290,6 +294,10 @@
       <span class="dot" onclick="currentSlide(3, 'hackathons-slideshow')"></span>
     </div>
   </section>
+
+  <footer>
+    <p>&copy; 2025 Eduvos Coding Club - Code Crashers. All rights reserved.</p>
+  </footer>
 
   <script src="eventsPage.js"></script>
 </body>
