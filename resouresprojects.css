@@ -204,3 +204,43 @@ header h1 {
     display: block; /* Override the default none display */
     opacity: 1;    /* Ensure visibility */
 }
+
+/* Add these CSS updates to your existing resouresprojects.css file */
+
+/* Fix for uploaded projects visibility */
+#uploaded-projects {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #ddd;
+}
+
+#uploaded-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#uploaded-projects-grid .project-card {
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Animation for submitted confirmation */
+@keyframes highlightCard {
+    0% { box-shadow: 0 0 0 2px #0400ff; }
+    50% { box-shadow: 0 0 20px 2px #0400ff; }
+    100% { box-shadow: 0 0 0 2px #0400ff; }
+}
+
+.uploaded-card {
+    animation: highlightCard 1.5s ease-in-out !important;
+}
+
+/* Ensure project cards are visible */
+.project-card.visible {
+    display: block !important;
+    opacity: 1 !important;
+}

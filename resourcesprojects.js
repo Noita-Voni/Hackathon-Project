@@ -4,14 +4,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const uploadedProjectsGrid = document.getElementById('uploaded-projects-grid');
     const categoryButtons = document.querySelectorAll('.category-btn');
     const submitForm = document.getElementById('submitProjectForm');
+    const uploadedProjectsSection = document.getElementById('uploaded-projects');
 
-    // Load projects from localStorage
+    // Project Management Functions
     function loadProjects() {
         const savedProjects = JSON.parse(localStorage.getItem('projects')) || [];
-        savedProjects.forEach(project => addProjectToGrid(project));
+        
+        // Only show the uploaded projects section if there are projects
+        if (savedProjects.length > 0) {
+            uploadedProjectsSection.style.display = 'block';
+            savedProjects.forEach(project => addProjectToGrid(project));
+        }
     }
 
-    // Save projects to localStorage
     function saveProject(project) {
         const savedProjects = JSON.parse(localStorage.getItem('projects')) || [];
         savedProjects.push(project);
@@ -21,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to create and append a project card
     function addProjectToGrid(project) {
         const newProject = document.createElement('div');
-        newProject.classList.add('project-card');
+        newProject.classList.add('project-card', 'uploaded-card');
         newProject.setAttribute('data-category', project.level);
 
         newProject.innerHTML = `
@@ -43,11 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add animation class
         newProject.style.animation = 'fadeIn 0.5s ease forwards';
         
+        // Make sure the uploaded projects section is visible
+        uploadedProjectsSection.style.display = 'block';
+        
         // Append to uploaded projects grid
         uploadedProjectsGrid.appendChild(newProject);
-        
-        // Make sure the uploaded projects section is visible
-        document.getElementById('uploaded-projects').style.display = 'block';
     }
 
     // Update likes in localStorage
@@ -66,11 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
         filterProjects(currentCategory);
     }
 
-    // Handle form submission
+    // Form Submission Handler
     submitForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        // Get form values
+        // Get form values and validate
         const title = document.getElementById('projectTitle').value;
         const level = document.getElementById('projectLevel').value;
         const githubLink = document.getElementById('projectLink').value;
@@ -83,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Create project object
+        // Create and save new project
         const newProject = {
             title,
             level,
@@ -93,30 +98,33 @@ document.addEventListener('DOMContentLoaded', function () {
             likes: 0
         };
 
-        // Save to localStorage
         saveProject(newProject);
-
-        // Add to UI
         addProjectToGrid(newProject);
-
-        // Refresh filter so the new project is displayed if it matches the current category
         refreshFilter();
-
-        // Reset form
         submitForm.reset();
     });
 
-    // Filter projects by category
+    // Filtering Function
     function filterProjects(category) {
-        const allProjectCards = document.querySelectorAll('.project-card');
-        allProjectCards.forEach(card => {
-            if (category === 'all' || card.dataset.category === category) {
-                card.style.display = 'block';
-                // Add animation
-                card.style.animation = 'fadeIn 0.5s ease';
-            } else {
-                card.style.display = 'none';
-            }
+        // Handle pre-existing project cards
+        const preExistingCards = document.querySelectorAll('#projects-grid .project-card');
+        preExistingCards.forEach(card => {
+            const shouldDisplay = category === 'all' || card.dataset.category === category;
+            card.style.display = shouldDisplay ? 'block' : 'none';
+            if (shouldDisplay) card.style.animation = 'fadeIn 0.5s ease';
+        });
+
+        // Handle user uploaded project cards differently
+        const uploadedCards = document.querySelectorAll('#uploaded-projects-grid .project-card');
+        uploadedCards.forEach(card => {
+            // For uploaded projects, you might want to:
+            // 1. Either show all of them regardless of category
+            // card.style.display = 'block';
+            
+            // 2. Or filter them by category like the pre-existing ones
+            const shouldDisplay = category === 'all' || card.dataset.category === category;
+            card.style.display = shouldDisplay ? 'block' : 'none';
+            if (shouldDisplay) card.style.animation = 'fadeIn 0.5s ease';
         });
 
         // Update active button state
@@ -137,23 +145,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Search functionality
+    // Search Implementation
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
         const allProjectCards = document.querySelectorAll('.project-card');
         
         allProjectCards.forEach(card => {
             const title = card.querySelector('h3').textContent.toLowerCase();
-            const description = card.querySelector('p').textContent.toLowerCase();
-            const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
+            const paragraphs = card.querySelectorAll('p');
+            let matches = title.includes(searchTerm);
             
-            card.style.display = isVisible ? 'block' : 'none';
+            // Check all paragraphs for search term
+            paragraphs.forEach(p => {
+                if (p.textContent.toLowerCase().includes(searchTerm)) {
+                    matches = true;
+                }
+            });
+            
+            card.style.display = matches ? 'block' : 'none';
         });
     });
 
-    // Initial load
+    // Initial Setup
     loadProjects();
-
-    // Show projects of a default category (e.g., beginner) initially
-    filterProjects('beginner');
+    filterProjects('all'); // Start with showing all projects instead of just beginner
 });
